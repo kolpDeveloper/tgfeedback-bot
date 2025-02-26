@@ -15,7 +15,7 @@
 ```bash
 pip install -r requirements.txt
 ```
-3. Скопируйте файл `.env.example` в `.env` и заполните необходимые переменные:
+3. Заполните необходимые переменные в .env:
    - `BOT_TOKEN` - токен вашего бота (получите у @BotFather)
    - `ADMIN_ID` - ваш Telegram ID (можно узнать у @userinfobot)
 
