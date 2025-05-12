@@ -8,17 +8,17 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from dotenv import load_dotenv
 
-# Загрузка переменных окружения
+ 
 load_dotenv()
 
-# Настройка логирования
+ 
 logging.basicConfig(level=logging.INFO)
 
-# Инициализация бота и диспетчера
+ 
 bot = Bot(token=os.getenv("BOT_TOKEN"))
 dp = Dispatcher()
 
-# Словарь для хранения активных чатов пользователей
+ 
 user_chats: Dict[int, int] = {}
 
 @dp.message(Command("start"))
@@ -43,12 +43,12 @@ async def handle_admin_reply(message: Message):
 async def handle_user_message(message: Message):
     """Обработчик сообщений от пользователей"""
     if message.from_user.id != int(os.getenv("ADMIN_ID", 0)):
-        # Пересылаем сообщение администратору
+        
         forwarded = await bot.send_message(
             os.getenv("ADMIN_ID"),
             f"Сообщение от пользователя {message.from_user.full_name} (ID: {message.from_user.id}):\n\n{message.text}"
         )
-        # Сохраняем связь между сообщением админа и ID пользователя
+         
         user_chats[forwarded.message_id] = message.from_user.id
         await message.answer("Ваше сообщение отправлено администратору. Ожидайте ответа.")
 
